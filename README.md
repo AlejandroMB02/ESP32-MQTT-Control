@@ -49,3 +49,41 @@ La comunicación entre el ESP32 y la web se realiza a través de un **broker MQT
   ```bash
   idf.py build
   idf.py -p /dev/ttyUSB0 flash monitor
+
+👉 Aquí puedes incluir una foto del montaje físico (ESP32 + DHT11 + LED).
+
+4. Levantar el Broker MQTT y el Dashboard
+  - Desde la carpeta principal:
+  ```bash
+  cd ./Dashboard
+  docker-compose up -d
+  ```
+  - Desde la carpeta principal:
+  ```bash
+  cd ./MQTT_Broker
+  docker-compose up -d
+  ```
+  Esto iniciará:
+  Mosquitto (broker MQTT)
+  Web Dashboard (interfaz web para visualizar/controlar)
+
+👉 Aquí puedes añadir una captura de pantalla del dashboard.
+
+## 📡 Comunicación MQTT
+
+### Tópicos publicados por el ESP32:
+
+esp32/temperature → valor de temperatura en °C
+esp32/humidity → valor de humedad en %
+
+### Tópicos suscritos por el ESP32:
+
+esp32/light → recibe "ON" o "OFF" para controlar la luz
+
+## 🌐 Flujo de Funcionamiento
+
+1. El ESP32 lee los datos del sensor DHT11.
+2. Publica temperatura y humedad en los tópicos MQTT correspondientes.
+3. El Dashboard se suscribe a estos tópicos y muestra los valores en tiempo real.
+4. Cuando el usuario interactúa con la web (encender/apagar luz), se publica un mensaje MQTT que el ESP32 recibe y ejecuta.
+
