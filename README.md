@@ -66,8 +66,6 @@ La comunicación entre el ESP32 y la web se realiza a través de un **broker MQT
   Mosquitto (broker MQTT)
   Web Dashboard (interfaz web para visualizar/controlar)
 
-👉 Aquí puedes añadir una captura de pantalla del dashboard.
-
 ## 📡 Comunicación MQTT
 
 ### Tópicos publicados por el ESP32:
@@ -85,5 +83,6 @@ esp32/light → recibe "ON" o "OFF" para controlar la luz
 2. Publica temperatura y humedad en los tópicos MQTT correspondientes.
 3. El Dashboard se suscribe a estos tópicos y muestra los valores en tiempo real.
 4. Cuando el usuario interactúa con la web (encender/apagar luz), se publica un mensaje MQTT que el ESP32 recibe y ejecuta.
+
 
 
