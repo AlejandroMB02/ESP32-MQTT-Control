@@ -16,9 +16,7 @@ La comunicación entre el ESP32 y la web se realiza a través de un **broker MQT
 - **MQTT Broker (Eclipse Mosquitto)**: Actúa como intermediario entre el ESP32 y la aplicación web.  
 - **Dashboard Web**: Desplegado en Docker, permite:
   - Visualizar los datos de temperatura y humedad.
-  - Encender y apagar una luz enviando comandos al ESP32.
-
-👉 Aquí puedes incluir un **diagrama de la arquitectura** (ESP32 ↔ MQTT Broker ↔ Web).  
+  - Encender y apagar una luz enviando comandos al ESP32.  
 
 ---
 
@@ -49,8 +47,9 @@ La comunicación entre el ESP32 y la web se realiza a través de un **broker MQT
   ```bash
   idf.py build
   idf.py -p /dev/ttyUSB0 flash monitor
+  ```
 
-👉 Aquí puedes incluir una foto del montaje físico (ESP32 + DHT11 + LED).
+![ProtoBoard](docs/protoboard.png)
 
 4. Levantar el Broker MQTT y el Dashboard
   - Desde la carpeta principal:
@@ -86,4 +85,5 @@ esp32/light → recibe "ON" o "OFF" para controlar la luz
 2. Publica temperatura y humedad en los tópicos MQTT correspondientes.
 3. El Dashboard se suscribe a estos tópicos y muestra los valores en tiempo real.
 4. Cuando el usuario interactúa con la web (encender/apagar luz), se publica un mensaje MQTT que el ESP32 recibe y ejecuta.
+
 
